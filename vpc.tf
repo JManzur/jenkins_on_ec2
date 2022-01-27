@@ -9,9 +9,9 @@ module "vpc" {
   cidr = "10.48.0.0/16"
 
   #AZ's and Subnets Definition
-  azs             = ["${var.aws_region}a", "${var.aws_region}b", "${var.aws_region}c"]
-  private_subnets = ["10.48.10.0/24", "10.48.11.0/24", "10.48.12.0/24"]
-  public_subnets  = ["10.48.20.0/24", "10.48.21.0/24", "10.48.22.0/24"]
+  azs             = ["${var.aws_region}a"]
+  private_subnets = ["10.48.10.0/24"]
+  public_subnets  = ["10.48.20.0/24"]
 
   tags                = merge(var.project-tags, { Name = "${var.resource-name-tag}-vpc" }, )
   private_subnet_tags = merge(var.project-tags, { Name = "${var.resource-name-tag}-private_subnet" }, )

@@ -21,8 +21,8 @@ resource "aws_instance" "jenkins-ec2" {
   user_data = <<EOF
   #!/bin/bash
   yum update -y
-  yum install git
-  amazon-linux-extras install ansible2
+  yum install git -y
+  amazon-linux-extras install ansible2 -y
   sleep 10
   ansible-pull -U https://github.com/JManzur/bastion-ansible-pull.git
   EOF
@@ -30,7 +30,7 @@ resource "aws_instance" "jenkins-ec2" {
   tags = merge(var.project-tags, { Name = "${var.resource-name-tag}-EC2" }, )
 
   root_block_device {
-    volume_size           = 120
+    volume_size           = 80
     volume_type           = "gp2"
     delete_on_termination = true
     tags                  = merge(var.project-tags, { Name = "${var.resource-name-tag}-EBS" }, )

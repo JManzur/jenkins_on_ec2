@@ -34,7 +34,7 @@ Generate a Key-Pair using AWS-CLI:
 aws ec2 create-key-pair --key-name Jenkins-DEMO --query 'KeyMaterial' --output text > Jenkins-DEMO.pem
 ```
 
->:warning: if you use a different key name, change the variable "key_name" in the variables.tf file
+>:warning: if you use a different key name, change the variable "key_name" in the variables.tf file. :warning:
 
 Change permissions:
 ```bash
@@ -45,8 +45,6 @@ Move to home folder:
 ```bash
 mv Jenkins-DEMO.pem ~/.ssh/Jenkins-DEMO.pem
 ```
-
->:warning: if you choose a different location, change the variable "local_ssh_key" in the variables.tf file
 
 ## Deployment How-To:
 

@@ -24,7 +24,7 @@ resource "aws_instance" "jenkins-ec2" {
   yum install git -y
   amazon-linux-extras install ansible2 -y
   sleep 10
-  ansible-pull -U https://github.com/JManzur/bastion-ansible-pull.git
+  ansible-pull -U https://github.com/JManzur/jenkins-ansible-pull
   EOF
 
   tags = merge(var.project-tags, { Name = "${var.resource-name-tag}-EC2" }, )

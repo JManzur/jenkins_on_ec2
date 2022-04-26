@@ -82,3 +82,29 @@ data "aws_subnet_ids" "private" {
   }
   depends_on = [module.vpc]
 }
+
+data "aws_subnet" "private" {
+  for_each = data.aws_subnet_ids.private.ids
+  id       = each.value
+}
+
+data "aws_subnet" "public" {
+  for_each = data.aws_subnet_ids.private.ids
+  id       = each.value
+}
+
+##VPC output
+output "vpc-id" {
+  value       = data.aws_vpc.selected.id
+  description = "Print the VPC ID fetched by vpc.tf"
+}
+
+output "public_subnet_ids" {
+  value       = [for i in data.aws_subnet.public : i.id]
+  description = "Print the public subnets id fetched by vpc.tf"
+}
+
+output "private_subnet_ids" {
+  value       = [for i in data.aws_subnet.private : i.id]
+  description = "Print the private subnets id fetched by vpc.tf"
+}

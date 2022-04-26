@@ -89,7 +89,7 @@ data "aws_subnet" "private" {
 }
 
 data "aws_subnet" "public" {
-  for_each = data.aws_subnet_ids.private.ids
+  for_each = data.aws_subnet_ids.public.ids
   id       = each.value
 }
 
